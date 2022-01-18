@@ -1,0 +1,114 @@
+h3,
+p {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.btBg{
+    background: #d7d9da;
+}
+nav.round {
+    border: 0px;
+    border-radius: 5px 5px 0px 0px;
+    padding: 0px;
+}
+div.wBg{
+    background: linear-gradient(180deg, rgba(71, 191, 223, 0) 0%, #47BFDF 100%);
+}
+div.warningBg {
+    background: linear-gradient(180deg, rgba(255, 153, 0, 0) 0%, rgba(252, 182, 77, 0.6) 50%, #FFA41D 100%);
+}
+div.yieldBg {
+    background: linear-gradient(180deg, rgba(255, 217, 102, 0) 0%, #FFD966 100%);
+}
+div.textAlign {
+    text-align: center;
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 500;
+    
+}
+
+div.WeektextAlign {
+    text-align: center;
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-size: 30px;
+}
+
+div.ellipse {
+    background: #FFFFFF;
+    box-shadow: 0px 28px 36px rgba(96, 209, 234, 0.4);
+    border-radius: 50%; 
+    width: 300px;
+    height: 300px;
+    display: flex;  
+    align-items: center;
+    margin: auto;
+}
+div.colsBg {
+    width: 60px;
+    height: 129px;
+    background: #FFFFFF;
+    opacity:0.9; 
+    border-radius: 10px;
+    align-items: center;
+}
+div.table {
+    border-radius: 10px; 
+    background: #FFFFFF;
+    text-align: center;
+    padding: 50px;
+    background-color: transparent;
+}
+div.textmode {
+    writing-mode: vertical-lr; 
+    text-orientation: upright;
+}
+div.datatextAlign {
+    text-align: right;
+    font-family: SF Pro Text;
+    font-size: 72px; 
+}
+div.mounthtextAlign{
+    text-align: center;
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-size: 24px; 
+}
+div.spantext{
+    font-size:15px;
+}
+
+div.p_title{
+    text-align: center;
+    padding: 30px;
+    font-family: SF Pro;
+    font-style: normal;
+    font-weight: 510;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+}
+
+div.p_year{
+    text-align: center;
+    padding: 30px;
+    font-family: SF Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+img.locationImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+img.icomImg{
+    width: 39px;
+    height: 38px;
+}

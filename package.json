@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@xfl/date-format": "^1.0.1",
+    "moment-lunar": "^0.0.4"
+  }
+}
