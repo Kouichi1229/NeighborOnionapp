@@ -64,7 +64,7 @@
                                                     <div class="row row-cols-1">
                                                         <div class='cols'><img src="images\15-30度.png " alt="15-30度 " id='ticon' class='icomImg'></div>
                                                         <!--圖顯示 -->
-                                                        <div class='cols'><span class='tem'></span></div>
+                                                        <div class='cols'><span id='nowT'></span></div>
                                                         <!--數字顯示 -->
                                                     </div>
                                                 </div>
@@ -75,7 +75,7 @@
                                                     <div class="row row-cols-1">
                                                         <div class='cols'><img src="images\sun.png" alt="sun" id="wicon" class='icomImg'></div>
                                                         <!--圖顯示 -->
-                                                        <div class='cols spantext'><span class='wx'></span></div>
+                                                        <div class='cols spantext'><span id='nowwx'></span></div>
                                                         <!--狀態顯示 -->
                                                     </div>
                                                 </div>
@@ -165,58 +165,45 @@
 
                     </div>
                     <!--help 天氣提示 -->
-                    <div>
-                        <p></p>
+                    <div style="position:relative; height:50px;">
                     </div>
                     <!--間隔的div -->
 
                     <div class='cols '>
                         <div class="container">
                             <div class="row">
-                                <div class="col">週一
+                                <div class="col"><span style='font-size:16px;' id='day_1'>週一</span>
                                     <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
+                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg' id='ticon_1'></div>
+                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg' id='wicon_1'></div>
                                     </div>
                                 </div>
-                                <div class="col">週二
+                                <div class="col"><span style='font-size:16px;' id='day_2'>週2</span>
                                     <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
+                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg' id='ticon_2'></div>
+                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg' id='wicon_2'></div>
                                     </div>
                                 </div>
-                                <div class="col">週三
+                                <div class="col"><span style='font-size:16px;' id='day_3'>週3</span>
                                     <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
+                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg' id='ticon_3'></div>
+                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg' id='wicon_3'></div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col"><span style='font-size:16px;' id='day_4'>週4</span>
+                                    <div class="row row-cols-1 colsBg">
+                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg' id='ticon_4'></div>
+                                        <div class="col"><img src="images\sun.png" alt="sun" class='icomImg' id='wicon_4'></div>
+                                    </div>
+                                </div>
+                                <div class="col"><span style='font-size:16px;' id='day_5'>週5</span>
+                                    <div class="row row-cols-1 colsBg">
+                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg' id='ticon_5'></div>
+                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg' id='wicon_5'></div>
+                                    </div>
+                                </div>
+                            </div><!--end of up weather -->
                             <div class="row">
-                                <div class="col">週四
-                                    <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png" alt="sun" class='icomImg'></div>
-                                    </div>
-                                </div>
-                                <div class="col">週五
-                                    <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度 " class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
-                                    </div>
-                                </div>
-                                <div class="col">週六
-                                    <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
-                                    </div>
-                                </div>
-                                <div class="col">週日
-                                    <div class="row row-cols-1 colsBg">
-                                        <div class="col"><img src="images\15-30度.png " alt="15-30度" class='icomImg'></div>
-                                        <div class="col"><img src="images\sun.png " alt="sun" class='icomImg'></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!--container -->
@@ -321,9 +308,6 @@
 
 
 
-
-
-
     <!--選單 天氣 提醒 產量-->
     <nav class="navbar fixed-bottom navbar-light bg-light round">
         <div class="container">
@@ -359,7 +343,7 @@
     <!--js-->
     <script src="js\bootstrap.min.js "></script>
     <script src="js\popper.min.js "></script>
-    <script src="js\api.js "></script>
+   <script src="js\api_V2.js "></script>
     <script src="js\app.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://unpkg.com/moment-lunar@0.0.4/moment-lunar.min.js"></script>
