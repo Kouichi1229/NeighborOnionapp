@@ -2,8 +2,23 @@ var xhr = new XMLHttpRequest();
 var date = document.querySelector('.date'); //日期
 var tem = document.querySelector('.tem'); //溫度
 var wx = document.querySelector('.wx'); //天氣描述
-var tIcon = document.querySelector('#ticon');
-var wIcon = document.querySelector('#wicon');
+
+var tIcon_now = document.querySelector('#ticon');
+var wIcon_now = document.querySelector('#wicon');
+var tIcon_1 = document.querySelector('#ticon_1');
+var wIcon_1 = document.querySelector('#wicon_1');
+var tIcon_2 = document.querySelector('#ticon_2');
+var wIcon_2 = document.querySelector('#wicon_2');
+var tIcon_3 = document.querySelector('#ticon_3');
+var wIcon_3 = document.querySelector('#wicon_3');
+var tIcon_4 = document.querySelector('#ticon_4');
+var wIcon_4 = document.querySelector('#wicon_4');
+var tIcon_5 = document.querySelector('#ticon_5');
+var wIcon_5 = document.querySelector('#wicon_5');
+var tIcon_6 = document.querySelector('#ticon_6');
+var wIcon_6 = document.querySelector('#wicon_6');
+
+
 
 //串接台灣天氣api，將城市名稱代入html的選單中
 function getWeather() {
@@ -17,56 +32,65 @@ function getWeather() {
 getWeather();
 
 // 選擇對應的日期
-function compareDate(x){
-    return new Date(x.startTime).getDate() == new Date(x.endTime).getDate();
-}
+function showPic(temValue,wx_v){
 
-//顯示相對應天氣狀況
-function showWeather(e) {
-    var dataObject = JSON.parse(xhr.responseText);
-    
-    var location_data = dataObject.records.locations[0].location[12].weatherElement;
-    var dataT = location_data[0].time;
-    //var T = dataT.filter(x=>x.elementName ==='T')[0].time;
-
-    var datawx = location_data[1].time;
-    //var Wx = datawx.filter(x=>x.elementName ==='Wx')[0].time;
-    
-    var t_len = dataT.length;
-    var wx_len = datawx.length;
-
-    for (var i = 0; i < t_len; i++) {
-        var temList = dataT[i].elementValue[0].value;   
-        tem.textContent = temList + '℃';
-        if (temList >= 30 ) {
+        if (temValue >= 30 ) {
             tIcon.src ='images/30度以上.png' ;
-        } else if (temList >= 15 && temList < 30 ) {
+        } else if (temValue >= 15 && temValue < 30 ) {
             tIcon.src = 'images/15-30度.png';
         } else  {
             tIcon.src = 'images/15度以下.png';
         }
 
-    }//end of for temList
 
-
-    for (var i = 0; i < wx_len; i++) {
-        var wxList = datawx[i].elementValue[0].value;
-        var wzValue = datawx[i].elementValue[1].value;
-        wx.textContent = wxList;
-
-        if (wzValue =='01' || wzValue =='02') {
+     if (wx_v =='01' || wx_v =='02') {
             wIcon.src ='images/sun.png' ;
-        } else if (wzValue =='04' || wzValue =='03' || wzValue =='05' || wzValue =='06' || wzValue =='07') {
+        } else if (wx_v =='04' || wx_v =='03' || wx_v =='05' || wx_v =='06' || wx_v =='07') {
             wIcon.src = 'images/02.svg';
-        } else if (wzValue =='08'|| wzValue =='09' || wzValue =='10' || wzValue =='11' || wzValue =='12' || wzValue =='13') {
+        } else if (wx_v =='08'|| wx_v =='09' || wx_v =='10' || wx_v =='11' || wx_v =='12' || wx_v =='13') {
             wIcon.src = 'images/10mm.png';
-        }else if (wzValue =='14' ||wzValue =='15' ) {
+        }else if (wx_v =='14' || wx_v =='15' ) {
             wIcon.src = 'images/10-25mm.png';
         }else {
             wIcon.src = 'images/25mm.png';
         }
 
-    }//end of for wxList
+}
+
+//顯示相對應天氣狀況
+function showWeather(e) {
+    var dataObject = JSON.parse(xhr.responseText);
+    var location_data = dataObject.records.locations[0].location[12].weatherElement;//車城鄉
+    var dataT = location_data[0].time;//氣溫資料
+    var datawx = location_data[1].time;//天氣狀況
+    //取得一周資料
+    var nowt = dataT[0].elementValue[0].value;
+    tem.textContent = nowt + '℃';
+
+    var nowwx = datawx[0].elementValue[0].value;
+    wx.textContent = nowwx;
+    var nowwx_v = datawx[0].elementValue[1].value;
+
+    if (nowt >= 30 ) {
+            tIcon.src ='images/30度以上.png' ;
+        } else if (nowt >= 15 && nowt < 30 ) {
+            //tIcon.src = 'images/15-30度.png';
+        } else  {
+            tIcon.src = 'images/15度以下.png';
+        }
+
+
+     if (nowwx_v =='01' || nowwx_v=='02') {
+            wIcon.src ='images/sun.png' ;
+        } else if (nowwx_v =='04' || nowwx_v=='03' || nowwx_v =='05' || nowwx_v =='06' || nowwx_v =='07') {
+            //wIcon.src = 'images/02.svg';
+        } else if (nowwx_v =='08'|| nowwx_v =='09' || nowwx_v =='10' || nowwx_v =='11' || nowwx_v =='12' || nowwx_v =='13') {
+            wIcon.src = 'images/10mm.png';
+        } else if (nowwx_v=='14' || nowwx_v =='15' ) {
+            wIcon.src = 'images/10-25mm.png';
+        }else {
+            wIcon.src = 'images/25mm.png';
+        }
 
 }// end of fun showWeather
 

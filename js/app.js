@@ -34,3 +34,14 @@ document.getElementById('year').innerHTML ='栽種年份：'+ year;
 document.getElementById('update').innerHTML ='更新日期：'+ year+'/'+ month+1 +'/'+ date;
 //document.getElementById("lunar").innerHTML = moment().year(1995).month(2).date(9).lunar().format('YYYY-MM-DD');
 
+function getOtherDate(days,lday){
+  document.getElementById(lday).innerHTML = (month+1) +'/'+(date + days);  
+}
+
+getOtherDate(0,"day_1");
+getOtherDate(1,"day_2");
+getOtherDate(2,"day_3");
+getOtherDate(3,"day_4");
+getOtherDate(4,"day_5");
+//getOtherDate(5,"day_6");
+//getOtherDate(6,"day_7");
