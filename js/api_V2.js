@@ -18,11 +18,7 @@ var wIcon_4 = document.querySelector('#wicon_4');
 var tIcon_5 = document.querySelector('#ticon_5');
 var wIcon_5 = document.querySelector('#wicon_5');
 
-var tIcon_6 = document.querySelector('#ticon_6');
-var wIcon_6 = document.querySelector('#wicon_6');
 
-var tIcon_7 = document.querySelector('#ticon_7');
-var wIcon_7 = document.querySelector('#wicon_7');
 
 
 //串接台灣天氣api，將城市名稱代入html的選單中
@@ -37,8 +33,7 @@ function getWeather() {
         showWeekweather(4,4,tIcon_3,wIcon_3);
         showWeekweather(6,6,tIcon_4,wIcon_4);
         showWeekweather(8,8,tIcon_5,wIcon_5);
-        showWeekweather(10,10,tIcon_6,wIcon_6);
-        showWeekweather(12,12,tIcon_7,wIcon_7);
+
     }
 } //end of fun getWeather
 getWeather();
@@ -58,7 +53,7 @@ function imgChange(Tem,wx_value,t_Icon,w_Icon){
     if (wx_value =='01' || wx_value =='02') {
         wxPic.src ='images/sun.png' ;
     } else if (wx_value =='04' || wx_value=='03' || wx_value =='05' || wx_value =='06' || wx_value =='07') {
-        wxPic.src = 'images/02.svg';
+        wxPic.src = 'images/05.svg';
     } else if (wx_value =='08'|| wx_value =='09' || wx_value =='10' || wx_value =='11' || wx_value =='12' || wx_value =='13') {
         wxPic.src = 'images/10mm.png';
     }else if (wx_value =='14' ||wx_value =='15' ) {
