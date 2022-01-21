@@ -27,7 +27,6 @@ jQuery.ajaxPrefilter(function(options) {
 
 //串接台灣天氣api，將城市名稱代入html的選單中
 function getWeather() {
-    //const xhr = new XMLHttpRequest();
     const apiKey ='https://cors-anywhere.herokuapp.com/https://premium-weather-api.weatherrisk.com/future-3t/168hr-township-model-forecast/%E5%B1%8F%E6%9D%B1%E7%B8%A3%E6%81%86%E6%98%A5%E9%8E%AE';
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
