@@ -1,6 +1,10 @@
-h3,
+h3{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:40px; 
+}
 p {
     font-family: 'Noto Sans TC', sans-serif;
+    font-size: 30px;
 }
 .btBg{
     background: #d7d9da;

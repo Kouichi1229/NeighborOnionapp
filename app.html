@@ -236,16 +236,22 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="container">
                         <div class="row row-cols-1">
+                            <div style='position:relative; height:20px;'></div>
                             <div class='cols'>
-                                <h3 style="color: #F60A0A; ">溫度</h3>
-
-                                <p>本周溫度預測適宜生長，請注意陽光曝曬時數滿13小時即可。</p>
+                            </div>
+                            <div class='cols'>
+                                <h3 id='temp' style="color: #F60A0A; ">溫度</h3>
+                                <p id='tempContent'>本周溫度預測適宜生長，請注意陽光曝曬時數滿13小時即可。</p>
                             </div>
 
                             <div class='cols'>
-                                <h3 style="color: #26A9E0; ">雨量</h3>
+                                <h3 id='rain' style="color: #26A9E0; ">雨量</h3>
+                                <p id='rainContent'>未來一周雨量預測皆適合洋蔥，請注意洋蔥的施肥與農藥噴灑。</p>
+                            </div>
 
-                                <p>未來一周雨量預測皆適合洋蔥，請注意洋蔥的施肥與農藥噴灑。</p>
+                            <div class='cols'>
+                                <h3 id='wind' style='color:#4A7C59;'>風向</h3>
+                                <p id='windContent'>未來一周雨量預測皆適合洋蔥，請注意洋蔥的施肥與農藥噴灑。</p>
                             </div>
                         </div>
                     </div>
@@ -255,6 +261,7 @@
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <div class="container">
                         <div class="row row-cols-1">
+                            <div style='position:relative; height:20px;'></div>
                             <h3 style="color: #F60A0A; ">溫度</h3>
                             <p>在生長期間溫度 較去年同期小幅度上升1~2°C，但整個生長期間的每月溫度均溫還在洋蔥耐熱範圍(15~26°C)。</p>
                             <h3 style="color: #26A9E0; ">雨量</h3>
@@ -266,6 +273,7 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <div class="container">
                         <div class="row row-cols-1">
+                            <div style='position:relative; height:20px;'></div>
                             <p style="text-align: center;" id='update'></p>
                             <p>颱風圓規昨晚(10日)在鵝鑾鼻東南方海面，暴風圈正擴大，中央氣象局昨晚發布海上颱風警報，雖不會登陸台灣，外圍環流將影響台灣9縣市有豪雨發生，恆春半島預估會下100至200毫米的雨量，目前正值洋蔥株苗栽種時間，利用巧固架育苗的農民可以盡快搬往集貨場。苗齡已達40~45天以上之苗圃採後苗株整理成束，以報紙包覆直立放置塑膠籃中以5℃冰存，等待適合的天候再行種植，避免苗株受損。</p>
                         </div>
@@ -300,7 +308,7 @@
                         </table>
                         <!--end of 產能表格 table -->
                     </div>
-                    <div class='cols' id="myChart" style="width:100%; max-width:600px; height:500px;">
+                    <div>
 
                     </div>
                 </div>
@@ -352,7 +360,7 @@
     <!--js-->
     <script src="js\bootstrap.min.js "></script>
     <script src="js\popper.min.js "></script>
-   <script src="js\api_V3.js "></script>
+    <script src="js\api_V3.js "></script>
     <script src="js\app.js "></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
