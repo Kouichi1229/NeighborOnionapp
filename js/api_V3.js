@@ -18,8 +18,12 @@ var wIcon_4 = document.querySelector('#wicon_4');
 var tIcon_5 = document.querySelector('#ticon_5');
 var wIcon_5 = document.querySelector('#wicon_5');
 
-
-
+const options ='https://premium-weather-api.weatherrisk.com/future-3t/168hr-township-model-forecast/%E5%B1%8F%E6%9D%B1%E7%B8%A3%E6%81%86%E6%98%A5%E9%8E%AE';
+jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
 
 //串接台灣天氣api，將城市名稱代入html的選單中
 function getWeather() {
@@ -28,14 +32,11 @@ function getWeather() {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             showWeather();
-            let count = 0;
-            let ticon = 'tIcon_';
-            let wicon = 'wIcon_';
             showWeekweather(tIcon_1,wIcon_1,30);
             showWeekweather(tIcon_2,wIcon_2,54);
-            showWeekweather(tIcon_3,wIcon_3,66);
-            showWeekweather(tIcon_4,wIcon_4,78);
-            showWeekweather(tIcon_5,wIcon_5,90);
+            showWeekweather(tIcon_3,wIcon_3,78);
+            showWeekweather(tIcon_4,wIcon_4,102);
+            showWeekweather(tIcon_5,wIcon_5,126);
         }//end of if 
     };
     xhr.open("GET", apiKey, true);
