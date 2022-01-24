@@ -72,47 +72,69 @@ function getTempatureId(tem,id){
     document.getElementById(id).innerHTML = tem + '℃';
 }
 //提醒 週報
-function TextColorChange(Tem,wind,pcpn){
+function TextColorChange(){
+    let len = dataObject.data.length;
+    for(let i=30;i<len;i+=12){
+        let temList = dataObject.data[i].tempture;
+        let windList = dataObject.data[i].wind_dir;
+        let popList = dataObject.data[i].pop;
+        let date = dataObject.data[i].forecast_time.start;
 
-    if (Tem >= 26 ) {
-      document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ Today +'日車城鄉跟恆春鄉天氣偏'+Tem+
-       '℃(熱)，提醒農友應留意防範農作暑害。';
-    } else if (Tem >= 15 && Tem < 26 ) {
-      document.getElementById('tempContent').innerHTML='溫度適宜';
-    } else  {
-      document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ Today +'日車城鄉跟恆春鄉天氣偏'+Tem+
-      '℃(冷)，提醒農友應留意防範農作寒害。';
-    }
+       if (temList >= 26 ) {
+          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+date +'日車城鄉跟恆春鄉天氣偏'+temList +
+          '℃(熱)，提醒農友應留意防範農作暑害。';
+      } else if (Tem >= 15 && Tem < 26 ) {
+          document.getElementById('tempContent').innerHTML='本周氣溫皆在正常範圍，無需擔心。';
+      } else  {
+          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ date +'日車城鄉跟恆春鄉天氣偏'+temList+
+          '℃(冷)，提醒農友應留意防範農作寒害。';
+      }
 
-    if(pcpn>10){
-      document.getElementById('rainContent').innerHTML = Today+'日。預估雨量大於10mm，提醒農友應留意農田排水，以減少農作損失';
-    }else{
-      document.getElementById('rainContent').innerHTML='';
-    }
+      if(popList > 60){
+          document.getElementById('rainContent').innerHTML =date +'日。預估降雨機率大於60%，提醒農友應留意農田排水，以減少農作損失。'
+      }else{
+          document.getElementById('rainContent').innerHTML='';
+      }
 
 
 
-    if (wind=='南風'){
-      document.getElementById('windContent').innerHTML= Today+'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
-    }else{
-      document.getElementById('windContent').innerHTML='';
-    }
-    
+      if (windList=='南風'){
+          document.getElementById('windContent').innerHTML= date+'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
+      }else{
+          document.getElementById('windContent').innerHTML='';
+      }
+
+  }
+
 }//end of TextColorChange
+
+function stateTime(timeStr){
+    let time='06:00';
+    if(timeStr.match(time)){        
+        document.getElementById('moningTime').style.color='red';
+    }else{
+        document.getElementById('eveningTime').style.color='red';
+    }
+
+}//更新時段
+
 //顯示相對應天氣狀況
 function showWeather(e) {
     //今天的顯示
 
     var dataObject = JSON.parse(xhr.responseText);
+    var time = dataObject.data[30].forecast_time.start;
     var dataT = dataObject.data[30].tempture;// 溫度
     var datawx = dataObject.data[30].weather_condition;// 氣象      
     var pcpn = dataObject.data[30].pcpn;
     var dataWind = dataObject.data[30].wind_dir;//風向
+    stateTime(time);
     getTempatureId(dataT,"nowT");
     document.getElementById("nowwx").innerHTML = datawx;
     imgChange(dataT,datawx,pcpn,tIcon,wIcon);
-    //TextColorChange(dataT,wind,pcpn);
+    TextColorChange();
 }// end of fun showWeather
+
 
 function showWeekweather(ticon,wicon,item){
     var dataObject = JSON.parse(xhr.responseText);
