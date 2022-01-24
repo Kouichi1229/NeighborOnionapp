@@ -63,25 +63,6 @@ div.table {
     padding: 50px;
     background-color: transparent;
 }
-div.textmode {
-    writing-mode: vertical-lr; 
-    text-orientation: upright;
-}
-div.datatextAlign {
-    text-align: right;
-    font-family: SF Pro Text;
-    font-size: 72px; 
-}
-div.mounthtextAlign{
-    text-align: center;
-    font-family: SF Pro Text;
-    font-style: normal;
-    font-size: 24px; 
-}
-div.spantext{
-    font-size:15px;
-}
-
 div.p_title{
     text-align: center;
     padding: 30px;

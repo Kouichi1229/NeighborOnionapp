@@ -73,6 +73,7 @@ function getTempatureId(tem,id){
 }
 //提醒 週報
 function TextColorChange(){
+    var dataObject = JSON.parse(xhr.responseText);
     let len = dataObject.data.length;
     for(let i=30;i<len;i+=12){
         let temList = dataObject.data[i].tempture;
@@ -81,9 +82,9 @@ function TextColorChange(){
         let date = dataObject.data[i].forecast_time.start;
 
        if (temList >= 26 ) {
-          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+date +'日車城鄉跟恆春鄉天氣偏'+temList +
+          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ date +'日車城鄉跟恆春鄉天氣偏'+temList +
           '℃(熱)，提醒農友應留意防範農作暑害。';
-      } else if (Tem >= 15 && Tem < 26 ) {
+      } else if (temList >= 15 && temList < 26 ) {
           document.getElementById('tempContent').innerHTML='本周氣溫皆在正常範圍，無需擔心。';
       } else  {
           document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ date +'日車城鄉跟恆春鄉天氣偏'+temList+
@@ -93,7 +94,7 @@ function TextColorChange(){
       if(popList > 60){
           document.getElementById('rainContent').innerHTML =date +'日。預估降雨機率大於60%，提醒農友應留意農田排水，以減少農作損失。'
       }else{
-          document.getElementById('rainContent').innerHTML='';
+          document.getElementById('rainContent').innerHTML='本周皆在正常範圍，無需擔心。';
       }
 
 
