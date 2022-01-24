@@ -79,20 +79,21 @@ function TextColorChange(){
         let temList = dataObject.data[i].tempture;
         let windList = dataObject.data[i].wind_dir;
         let popList = dataObject.data[i].pop;
-        let date = dataObject.data[i].forecast_time.start;
+        let dateList = dataObject.data[i].forecast_time.start;
+        let dayList = new Date(dateList).getDate(); 
 
        if (temList >= 26 ) {
-          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ date +'日車城鄉跟恆春鄉天氣偏'+temList +
+          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ dayList +'日車城鄉及恆春鄉天氣偏'+temList +
           '℃(熱)，提醒農友應留意防範農作暑害。';
       } else if (temList >= 15 && temList < 26 ) {
           document.getElementById('tempContent').innerHTML='本周氣溫皆在正常範圍，無需擔心。';
       } else  {
-          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ date +'日車城鄉跟恆春鄉天氣偏'+temList+
+          document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ dayList +'日車城鄉及恆春鄉天氣偏'+temList+
           '℃(冷)，提醒農友應留意防範農作寒害。';
       }
 
       if(popList > 60){
-          document.getElementById('rainContent').innerHTML =date +'日。預估降雨機率大於60%，提醒農友應留意農田排水，以減少農作損失。'
+          document.getElementById('rainContent').innerHTML = dayList +'日。預估降雨機率大於60%，提醒農友應留意農田排水，以減少農作損失。'
       }else{
           document.getElementById('rainContent').innerHTML='本周皆在正常範圍，無需擔心。';
       }
@@ -100,9 +101,9 @@ function TextColorChange(){
 
 
       if (windList=='南風'){
-          document.getElementById('windContent').innerHTML= date+'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
+          document.getElementById('windContent').innerHTML= dayList +'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
       }else{
-          document.getElementById('windContent').innerHTML='';
+          document.getElementById('windContent').innerHTML='本周並無吹向南風，無需擔心。';
       }
 
   }
