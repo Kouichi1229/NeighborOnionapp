@@ -2,12 +2,12 @@ h3{
     font-family: 'Noto Sans TC', sans-serif;
     font-size:40px; 
 }
-p {
+p.hint{
+   font-family: 'Noto Sans TC', sans-serif; 
+}
+p.remind {
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 30px;
-}
-.btBg{
-    background: #d7d9da;
 }
 nav.round {
     border: 0px;
@@ -39,10 +39,9 @@ div.WeektextAlign {
     font-size: 30px;
 }
 
-div.ellipse {
+div.rectangle {
     background: #FFFFFF;
     box-shadow: 0px 28px 36px rgba(96, 209, 234, 0.4);
-    border-radius: 50%; 
     width: 300px;
     height: 300px;
     display: flex;  
@@ -105,14 +104,38 @@ div.p_year{
     color: #000000;
 }
 
-img.locationImg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+img.Top-icon{
+    width: 50px;
+    height: 50px;
+}
 
+img.Top_locationImg {
+    width: 50px;
+    height: 50px;
 }
 
 img.icomImg{
     width: 39px;
     height: 38px;
+}
+
+span.text{
+    font-size: 25px;
+    vertical-align:middle; 
+}
+
+strong.lunarText{
+    font-size:35px;
+}
+strong.locationText{
+    font-size: 30px;
+}
+
+strong.date{
+    font-family: 'SF Pro Text';
+    font-size: 50px;
+}
+strong.weekend{
+    font-family: 'SF Pro Text';
+    font-size: 30px; 
 }

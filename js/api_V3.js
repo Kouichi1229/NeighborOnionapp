@@ -75,33 +75,26 @@ function getTempatureId(tem,id){
 function TextColorChange(Tem,wind,pcpn){
 
     if (Tem >= 26 ) {
-      //document.getElementById("temp").style.color = "red";
       document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ Today +'日車城鄉跟恆春鄉天氣偏'+Tem+
        '℃(熱)，提醒農友應留意防範農作暑害。';
     } else if (Tem >= 15 && Tem < 26 ) {
-      //document.getElementById("temp").style.color = "green";
       document.getElementById('tempContent').innerHTML='溫度適宜';
     } else  {
-      document.getElementById("temp").style.color = "blue";
       document.getElementById('tempContent').innerHTML = '依據中央氣象局發布氣象資料，'+ Today +'日車城鄉跟恆春鄉天氣偏'+Tem+
       '℃(冷)，提醒農友應留意防範農作寒害。';
     }
 
     if(pcpn>10){
-      //document.getElementById("rain").style.color = "red";
       document.getElementById('rainContent').innerHTML = Today+'日。預估雨量大於10mm，提醒農友應留意農田排水，以減少農作損失';
     }else{
-      //document.getElementById("rain").style.color = "green";
       document.getElementById('rainContent').innerHTML='';
     }
 
 
 
     if (wind=='南風'){
-      //document.getElementById("wind").style.color = "red";
       document.getElementById('windContent').innerHTML= Today+'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
     }else{
-      //document.getElementById("wind").style.color = "green";
       document.getElementById('windContent').innerHTML='';
     }
     
@@ -118,7 +111,7 @@ function showWeather(e) {
     getTempatureId(dataT,"nowT");
     document.getElementById("nowwx").innerHTML = datawx;
     imgChange(dataT,datawx,pcpn,tIcon,wIcon);
-    TextColorChange(dataT,wind,pcpn);
+    //TextColorChange(dataT,wind,pcpn);
 }// end of fun showWeather
 
 function showWeekweather(ticon,wicon,item){

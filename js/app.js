@@ -29,7 +29,7 @@ switch (new Date().getDay()) {
 }
 document.getElementById("weekend").innerHTML = day;
 document.getElementById('mounth').innerHTML = month+1 + "月" ;
-document.getElementById('date').innerHTML = date;
+document.getElementById('date').innerHTML = date+'日';
 document.getElementById('year').innerHTML ='栽種年份：'+ year;
 document.getElementById('update').innerHTML ='更新日期：'+ year+'/'+ month+1 +'/'+ date;
 //document.getElementById("lunar").innerHTML = moment().year(1995).month(2).date(9).lunar().format('YYYY-MM-DD');
