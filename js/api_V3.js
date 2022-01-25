@@ -98,15 +98,13 @@ function TextColorChange(){
           document.getElementById('rainContent').innerHTML='本周皆在正常範圍，無需擔心。';
       }
 
-
-
       if (windList=='南風'){
           document.getElementById('windContent').innerHTML= dayList +'日。有改吹南風的機率。請農友們注意洋蔥保護，減少農作損傷。';
       }else{
           document.getElementById('windContent').innerHTML='本周並無吹向南風，無需擔心。';
       }
 
-  }
+  }//end of for loop
 
 }//end of TextColorChange
 
