@@ -60,7 +60,7 @@ div.table {
     border-radius: 10px; 
     background: #FFFFFF;
     text-align: center;
-    padding: 50px;
+    padding: 5px;
     background-color: transparent;
 }
 div.p_title{
@@ -83,6 +83,15 @@ div.p_year{
     font-size: 20px;
     line-height: 24px;
     color: #000000;
+}
+
+div.predict{
+    margin-left: 0ex;
+    margin-right: 0ex;
+    padding-top: 2ex;
+    padding-right: 1ex;
+    padding-bottom: 3ex;
+    padding-left: 1ex;
 }
 
 img.Top-icon{
@@ -119,4 +128,13 @@ strong.date{
 strong.weekend{
     font-family: 'SF Pro Text';
     font-size: 30px; 
+}
+
+img.dot {
+    width: 150px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:transparent;
 }
