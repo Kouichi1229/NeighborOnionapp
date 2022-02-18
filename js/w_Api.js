@@ -73,7 +73,7 @@ function getTempatureId(tem,id){
 }
 //提醒 週報
 function TextColorChange(){
-    var dataObject = JSON.parse(xhr.responseText);
+    let dataObject = JSON.parse(xhr.responseText);
     let len = dataObject.data.length;
     for(let i=30;i<len;i+=12){
         let temList = dataObject.data[i].tempture;
@@ -122,7 +122,7 @@ function stateTime(timeStr){
 function showWeather(e) {
     //今天的顯示
 
-    var dataObject = JSON.parse(xhr.responseText);
+    let dataObject = JSON.parse(xhr.responseText);
     var time = dataObject.data[30].forecast_time.start;
     var dataT = dataObject.data[30].tempture;// 溫度
     var datawx = dataObject.data[30].weather_condition;// 氣象      
@@ -137,7 +137,7 @@ function showWeather(e) {
 
 
 function showWeekweather(ticon,wicon,item){
-    var dataObject = JSON.parse(xhr.responseText);
+    let dataObject = JSON.parse(xhr.responseText);
     var dataT = dataObject.data[item].tempture;// 溫度
     var datawx = dataObject.data[item].weather_condition;// 氣象      
     var pcpn = dataObject.data[item].pcpn;      

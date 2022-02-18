@@ -4,7 +4,7 @@ function getPlant() {
     const apiKey = 'https://cors-anywhere.herokuapp.com/https://apipost-no-v1.herokuapp.com/users';
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var dataObject = JSON.parse(xhr.responseText);
+            let dataObject = JSON.parse(xhr.responseText);
             let len = dataObject.length;
             var t_Msg = dataObject[len-1].temp;
             var r_Msg = dataObject[len-1].rain;
