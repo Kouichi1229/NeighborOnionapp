@@ -1,0 +1,120 @@
+# 隔壁老洋（NeighborOnionapp）技術經歷回顧
+
+> 本文件整理作者曾參與的農業資訊應用實作。依據三個 Repository 中可讀取的程式碼與 README 撰寫；未有原始碼證據的工作不推定為個人完成，也不將未驗證的歷史功能描述為目前可用。
+
+## 1. 專案定位
+
+「隔壁老洋」是一個以屏東恆春洋蔥栽培情境為背景的農業資訊應用。系統嘗試把天氣預報、農務提醒、警報內容與洋蔥價格資訊集中在行動裝置可瀏覽的網站，並另建管理端表單與後端 API，讓管理者能新增栽植提醒及警報資料。
+
+它不是單一網頁，而是由三個程式專案組成：
+- 靜態前端展示網站。
+- FastAPI 後端與 SQLite 資料庫。
+- Streamlit 管理者輸入介面。
+
+## 2. 可由程式碼佐證的技術能力
+
+| 能力 | 實作證據 | 技術 |
+|---|---|---|
+| 前端頁面開發 | 天氣、提醒、價格三個主要頁籤及行動版版面 | HTML、CSS、Bootstrap |
+| DOM 操作 | 更新日期、天氣文字、圖示及提醒內容 | JavaScript |
+| 第三方 API 串接 | XMLHttpRequest GET 請求天氣預報、解析 JSON | JavaScript、AJAX |
+| 條件式商業邏輯 | 依溫度、降雨量／機率、風向選擇圖示與提醒文字 | JavaScript |
+| REST API 開發 | 定義 `/plant`、`/aler`、`/bookings` GET／POST 路由 | FastAPI |
+| 請求資料驗證 | 定義欄位型別與字串長度限制 | Pydantic |
+| ORM 資料存取 | 定義資料表、查詢、新增與 commit／refresh | SQLAlchemy |
+| 關聯式資料庫 | SQLite engine、session 與三個 ORM models | SQLite |
+| 管理端工具 | 表單、頁面切換、提交狀態與 JSON 回應顯示 | Streamlit |
+| HTTP 整合 | 管理端使用 Requests POST JSON 至 API | Requests |
+
+## 3. 系統整合能力
+
+此專案最值得呈現的部分，是將不同技術組件組成一個實際應用流程：
+
+1. 使用者透過前端網站查看天氣與農務資訊。
+2. 前端向第三方天氣 API 取得預報資料。
+3. JavaScript 解析預報資料，依條件更新網頁文字與圖示。
+4. 管理者透過 Streamlit 輸入栽植期提醒或預警報。
+5. Streamlit 以 HTTP POST 將 JSON 傳送到 FastAPI。
+6. FastAPI 使用 Pydantic schema 驗證資料，再透過 SQLAlchemy 寫入 SQLite。
+
+這代表專案經驗不只停留在單一語言或單一頁面，而是包含前端、API、資料驗證、資料庫與管理介面的跨層整合。
+
+## 4. 前端與 API 實作細節
+
+### 前端
+
+- 以 HTML 建立天氣、提醒與價格頁籤。
+- 透過 Bootstrap 與 CSS 處理版面。
+- 使用 JavaScript XMLHttpRequest 取得天氣資料。
+- 解析預報 JSON，依固定索引取得時段資料。
+- 依溫度區間切換溫度圖示；依天氣現象與降雨量切換天氣圖示。
+- 依溫度、降雨機率及風向產生農務提醒文字。
+- 以 JavaScript Date 更新當日日期、星期及未來五個日期標籤。
+
+### 後端
+
+- FastAPI 定義 GET／POST 路由。
+- 使用 Pydantic schema 限制欄位型別與文字長度。
+- 使用 SQLAlchemy ORM 定義 users、rooms、bookings 三個資料表。
+- 使用 `Depends(get_db)` 注入資料庫 session，並於請求結束後關閉。
+- 預約 CRUD 嘗試檢查同一 room 的時間區間是否重疊。
+
+### 管理端
+
+- Streamlit 以 sidebar selectbox 切換栽植期及預警報表單。
+- 使用 text_area 收集文字內容。
+- 使用 Requests 將資料 POST 到 API。
+- 依 HTTP status code 顯示送出狀態及回應 JSON。
+
+## 5. 必須如實說明的技術界線
+
+### 價格預測
+
+目前前端 HTML 顯示固定的 2022 年 1 月預測數字與圖表圖片。僅憑目前讀取到的程式碼，無法證明此 Repository 內含價格模型訓練、推論或即時更新流程。履歷可說明「價格預測資訊展示」，不宜說成自行開發並部署即時價格預測模型。
+
+### 天氣 API 與農務提醒
+
+可以確認程式串接 WeatherRisk 恆春鄉 168 小時預報 API，並實作條件式提醒。不能推定提醒規則經過農業專家驗證，也不能將程式顯示文字視為正式農業建議。前端使用第三方 CORS proxy，且程式有未定義變數等潛在問題，未經重新測試。
+
+### 預約功能
+
+後端有預約資料模型與路由，但目前 Streamlit 管理端沒有對應預約表單；預約 CRUD 亦存在 ORM 欄位名稱不一致問題。因此可描述為曾設計預約資料結構及衝突檢查邏輯，不可宣稱預約功能已完整驗證。
+
+### 個人貢獻
+
+目前 Repository 能證明程式結構及功能實作，但無法單憑程式碼判斷團隊每位成員的實際工作比例。對外描述應以作者能確認的實際分工為準。
+
+## 6. 履歷描述建議
+
+### 中文履歷版本
+
+參與「隔壁老洋」農業資訊應用開發，整合恆春地區天氣預報、洋蔥栽培提醒及價格資訊。前端使用 HTML、CSS、Bootstrap 與 JavaScript 串接第三方天氣 API，解析 JSON 並依溫度、降雨及風向條件動態更新天氣圖示與農務提醒；另以 Python、FastAPI 建置 REST API，使用 Pydantic 驗證資料、SQLAlchemy ORM 操作 SQLite，並以 Streamlit 建立管理端表單，透過 Requests 將栽植提醒及預警資料送往後端。
+
+### 面試口頭說明版本
+
+這個專案是農業資訊應用，主要是希望讓洋蔥農民能在手機上查看當地天氣與栽培提醒。我們把系統拆成前端展示網站、管理端表單和 API 後端。前端使用 JavaScript 串接天氣 API，依照溫度、降雨和風向顯示不同提醒；管理端用 Streamlit 建立輸入表單，再透過 Requests 呼叫 FastAPI。後端使用 Pydantic 驗證資料，並透過 SQLAlchemy 將資料存進 SQLite。這個專案讓我接觸到從前端、API 到資料庫的整合流程。
+
+## 7. 技術能力定位
+
+| 技術 | 專案證據 | 合理定位 |
+|---|---|---|
+| HTML／CSS／Bootstrap | 靜態頁面及版面 | 有前端頁面實作經驗 |
+| JavaScript | DOM 更新、日期處理、條件判斷 | 有原生 JS 與 API 串接經驗 |
+| AJAX／XHR | 天氣資料 GET 請求 | 有非同步 HTTP 請求經驗 |
+| Python | FastAPI、Streamlit 應用 | 有 Python 應用開發經驗 |
+| FastAPI | REST 路由、依賴注入 | 有 API 開發經驗 |
+| Pydantic | request／response schemas | 有資料驗證經驗 |
+| SQLAlchemy | ORM models、CRUD | 有 ORM 資料存取經驗 |
+| SQLite | 關聯式資料表與 session | 有輕量型關聯式資料庫經驗 |
+| Streamlit | 管理端表單 | 有快速建立內部工具經驗 |
+| 系統整合 | 前端、管理端、API、資料庫 | 有跨層應用整合經驗 |
+
+## 8. 專案留下的職涯資產
+
+- 從使用者情境拆解出展示端與管理端需求。
+- 實作第三方 API 串接與 JSON 資料處理。
+- 建立 REST API、資料驗證及 ORM 資料庫存取流程。
+- 將管理端表單與後端服務整合。
+- 有前端與 Python 後端跨技術協作的實務接觸。
+
+**專案定位總結：** 農業資訊整合與全端應用實作經驗，核心價值在於 JavaScript 天氣 API 串接、FastAPI REST API、SQLite ORM 資料存取，以及 Streamlit 管理工具整合。
